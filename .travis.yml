@@ -1,0 +1,11 @@
+sudo: required # Need superuser permission to execute docker
+language: generic 
+services:
+  - docker # Install copy of docker into our container
+
+before_install: # Need to be executed before we start our test or deployment
+  - docker build -t vinaldorichard/docker-react-intro -f Dockerfile.dev .
+
+script: # Test suite run and then exits automatically
+  - docker run -e CI=true vinaldorichard/docker-react-intro npm run test
+
