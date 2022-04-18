@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    # Container
+    build:
+      context: . # Where we want the files/folder pulled from
+      dockerfile: Dockerfile.dev # The file name 
+    ports:
+      - "3000:3000" #outside-inside
+    volumes:
+      - /app/node_modules
+      - .:/app
+  tests:
+    # Container for tests 
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: [ "npm", "run", "test" ]
