@@ -1,0 +1,14 @@
+# Base image
+FROM node:alpine
+# Set working directory
+WORKDIR '/app'
+# Copy the json files
+COPY package.json .
+RUN npm install -g npm@8.6.0
+RUN npm install
+# Change the owner
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+
+COPY . .
+
+CMD [ "npm","run", "start" ]
