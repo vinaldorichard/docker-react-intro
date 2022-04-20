@@ -9,3 +9,14 @@ before_install: # Need to be executed before we start our test or deployment
 script: # Test suite run and then exits automatically
   - docker run -e CI=true vinaldorichard/docker-react-intro npm run test
 
+deploy:
+  provider: elasticbeanstalk # Preconfigured : (e.g : AWS, Digital Ocean)
+  region: "us-east-1"
+  app: "docker-react-intro" # elasticbeanstalk application
+  env: "Dockerreactintro-env" # elasticbeanstalk environment
+  bucket_name: "elasticbeanstalk-us-east-1-169758498070" # Take all files from github, zip it and copy it to s3 bucket (harddrive AWS), and notify AWS to deploy it
+  bucket_path: "docker-react-intro" # Folder name inside S3 drive
+  on:
+    branch: master # Only deploy when push to branch master
+  access_key_id: $AWS_ACCESS_KEY # From local variable env
+  secret_access_key: $AWS_SECRET_KEY
