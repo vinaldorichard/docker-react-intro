@@ -9,7 +9,7 @@ before_install: # Need to be executed before we start our test or deployment
 script: # Test suite run and then exits automatically
   - docker run -e CI=true vinaldorichard/docker-react-intro npm run test
 
-deploy:
+deploy: # Deploy to AWS Elasticbeanstalk
   provider: elasticbeanstalk # Preconfigured : (e.g : AWS, Digital Ocean)
   region: "us-east-1"
   app: "docker-react-intro" # elasticbeanstalk application
