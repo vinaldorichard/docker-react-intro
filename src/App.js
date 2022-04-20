@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React with Richard Vinaldo Richard s
+          Learn React with Richard Vinaldo Richard
         </a>
       </header>
     </div>
